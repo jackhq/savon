@@ -25,3 +25,34 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include("lib/**/*.rb")
   rdoc.options = ["--line-numbers", "--inline-source"]
 end
+
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gemspec|
+    gemspec.name = "savon"
+    gemspec.summary = "Heavy metal Ruby SOAP client library"
+    gemspec.description = ""
+    gemspec.email = "me@rubiii.com"
+    gemspec.homepage = "http://github.com/rubiii/savon"
+    gemspec.authors = ["Daniel Harrington"]
+    gemspec.version = "0.6.8"
+    gemspec.date = "2010-01-01"
+
+
+    gemspec.files = FileList["[A-Z]*", "{lib,spec}/**/*.{rb,xml}"]
+    gemspec.test_files = FileList["spec/**/*.rb"]
+
+    gemspec.extra_rdoc_files = ["README.textile"]
+    gemspec.rdoc_options = ["--charset=UTF-8", "--title", "Savon", "--line-numbers", "--inline-source"]
+
+    gemspec.add_dependency "builder", ">= 2.1.2"
+    gemspec.add_dependency "crack", ">= 0.1.4"
+
+    gemspec.add_development_dependency "rspec", ">= 1.2.8"
+    gemspec.add_development_dependency "mocha", ">= 0.9.7"
+    gemspec.add_development_dependency "fakeweb", ">= 1.2.7"
+    
+  end
+rescue LoadError
+  puts "Jeweler not available. Install it with: gem install jeweler"
+end
